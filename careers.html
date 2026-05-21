@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Careers | Vision Tech Solutions</title>
+<style>
+  :root {
+    --maroon: #8B1E2D;
+    --maroon-dark: #6E1622;
+    --navy: #1B2D4F;
+    --navy-dark: #122039;
+    --silver: #A8A8A8;
+    --silver-light: #E6E6E6;
+    --bg: #F7F7F9;
+    --white: #FFFFFF;
+    --text: #1F2533;
+    --muted: #5A6275;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+  .navbar {
+    background: var(--navy);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  .brand-mark {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--maroon);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    border: 2px solid var(--maroon);
+  }
+  .brand-mark span:last-child { color: var(--navy); }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.75rem;
+  }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--silver); }
+  .nav-links a.active {
+    color: var(--white);
+    border-bottom: 2px solid var(--maroon);
+    padding-bottom: 4px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 60%, var(--maroon) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 4.5rem 1.5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 40px;
+    background: var(--bg);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%);
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+  .hero .tagline {
+    color: var(--silver);
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero .tagline span { color: var(--maroon); margin: 0 0.5rem; }
+  .hero p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #DDE2EC;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+  .section { margin-bottom: 3.5rem; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--silver-light);
+  }
+  .section-header .bar {
+    width: 6px; height: 32px;
+    background: var(--maroon);
+    border-radius: 3px;
+  }
+  .section-header h2 {
+    color: var(--navy);
+    font-size: 1.75rem;
+  }
+
+  .lead {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---------- CARD GRID ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 8px rgba(27,45,79,0.08);
+    border-top: 4px solid var(--maroon);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(27,45,79,0.15);
+  }
+  .card.navy-top { border-top-color: var(--navy); }
+
+  .card .icon {
+    width: 48px; height: 48px;
+    border-radius: 8px;
+    background: var(--silver-light);
+    color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  .card.navy-top .icon { color: var(--maroon); }
+
+  .card h3 {
+    color: var(--navy);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .card .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--maroon);
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+  .card.navy-top .tag { background: var(--navy); }
+
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  /* ---------- QUALIFICATIONS ---------- */
+  .qual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .qual-item {
+    background: var(--white);
+    border-left: 4px solid var(--navy);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+  }
+  .qual-item .check {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--maroon);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  /* ---------- APPLICATION ---------- */
+  .apply-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--maroon) 100%);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(27,45,79,0.2);
+  }
+  .apply-box h2 { color: var(--white); margin-bottom: 0.75rem; font-size: 1.75rem; }
+  .apply-box p { color: #E6E9F0; margin-bottom: 1.5rem; }
+
+  .requirements {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  .req-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--white);
+    color: var(--maroon);
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    border: 2px solid var(--white);
+  }
+  .btn:hover {
+    background: transparent;
+    color: var(--white);
+    transform: scale(1.03);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--navy-dark);
+    color: var(--silver);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    border-top: 4px solid var(--maroon);
+  }
+  footer a { color: var(--white); text-decoration: none; }
+  footer a:hover { color: var(--silver); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 640px) {
+    .navbar { flex-direction: column; gap: 0.75rem; padding: 1rem; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero .tagline { font-size: 0.8rem; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="brand">
+    <div class="brand-mark"><span>V</span><span>T</span></div>
+    Vision Tech Solutions
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>Join Our Team</h1>
+  <p class="tagline">Innovate <span>&bull;</span> Connect <span>&bull;</span> Secure</p>
+  <p>Build your future in tech with Vision Tech Solutions. Explore our internship and career opportunities and grow alongside a team that values learning, collaboration, and excellence.</p>
+</header>
+
+<main>
+
+  <!-- INTERNSHIP OPPORTUNITIES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="bar"></div>
+      <h2>Internship Opportunities</h2>
+    </div>
+    <p class="lead">Designed to help students and beginners gain hands-on experience in the IT field while working with industry professionals.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">&lt;/&gt;</div>
+        <span class="tag">Internship</span>
+        <h3>Web Development Intern</h3>
+        <p>Assist our developers in building, testing, and maintaining responsive websites using HTML, CSS, and JavaScript.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">&#9881;</div>
+        <span class="tag">Internship</span>
+        <h3>IT Support Intern</h3>
+        <p>Learn how to troubleshoot hardware, software, and network issues while providing technical support to our clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVAILABLE JOBS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="bar"></div>
+      <h2>Available Jobs</h2>
+    </div>
+    <p class="lead">Full-time employment opportunities for skilled professionals who are ready to make a difference in the tech industry.</p>
+
+    <div class="grid">
+      <div class="card navy-top">
+        <div class="icon">&#9881;</div>
+        <span class="tag">Full Time</span>
+        <h3>Website Developer</h3>
+        <p>Design, develop, and maintain high-quality websites and web applications for our clients across various industries.</p>
+      </div>
+
+      <div class="card navy-top">
+        <div class="icon">&#127760;</div>
+        <span class="tag">Full Time</span>
+        <h3>Network Technician</h3>
+        <p>Install, configure, and maintain network infrastructure, ensuring stable and secure connectivity for client operations.</p>
+      </div>
+
+      <div class="card navy-top">
+        <div class="icon">&#128187;</div>
+        <span class="tag">Full Time</span>
+        <h3>IT Support Assistant</h3>
+        <p>Provide first-line technical support, resolve user issues, and help maintain smooth daily IT operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFICATIONS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="bar"></div>
+      <h2>Qualifications Needed</h2>
+    </div>
+    <p class="lead">Below are the core skills and qualifications we look for in applicants. Specific requirements may vary by position.</p>
+
+    <div class="qual-grid">
+      <div class="qual-item"><div class="check">&#10003;</div>Basic computer knowledge</div>
+      <div class="qual-item"><div class="check">&#10003;</div>HTML / CSS skills</div>
+      <div class="qual-item"><div class="check">&#10003;</div>Networking knowledge</div>
+      <div class="qual-item"><div class="check">&#10003;</div>Communication skills</div>
+      <div class="qual-item"><div class="check">&#10003;</div>Teamwork ability</div>
+      <div class="qual-item"><div class="check">&#10003;</div>Willingness to learn</div>
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <section class="section">
+    <div class="apply-box">
+      <h2>How to Apply</h2>
+      <p>Send the following documents to our company email and our HR team will get back to you:</p>
+
+      <div class="requirements">
+        <span class="req-chip">&#128196; CV / Resume</span>
+        <span class="req-chip">&#9993; Application Letter</span>
+        <span class="req-chip">&#128206; Supporting Documents</span>
+      </div>
+
+      <a href="mailto:visiontechsolutions@gmail.com?subject=Job%20Application" class="btn">
+        Apply Now &rarr;
+      </a>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">
+        Or email us directly at <strong>visiontechsolutions@gmail.com</strong>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 Vision Tech Solutions &nbsp;&bull;&nbsp; Innovate &bull; Connect &bull; Secure &nbsp;&bull;&nbsp;
+  <a href="mailto:visiontechsolutions@gmail.com">visiontechsolutions@gmail.com</a>
+</footer>
+
+</body>
+</html>
