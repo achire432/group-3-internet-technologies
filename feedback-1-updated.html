@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback – Vision Tech Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:       #8B1527;
+      --crimson-vivid: #B01E33;
+      --crimson-pale:  #f9e9ec;
+      --navy:          #0E1B34;
+      --navy-mid:      #162347;
+      --navy-light:    #1E3060;
+      --silver:        #9DA8B7;
+      --silver-light:  #C5CAD3;
+      --off-white:     #F4F7FC;
+      --white:         #FFFFFF;
+      --text:          #0A1628;
+      --text-soft:     #4A5875;
+      --border:        #DDE3EF;
+      --radius-sm:     6px;
+      --radius-md:     12px;
+      --radius-lg:     20px;
+      --shadow-sm:     0 2px 10px rgba(14,27,52,.07);
+      --shadow-md:     0 8px 32px rgba(14,27,52,.12);
+      --shadow-lg:     0 20px 60px rgba(14,27,52,.18);
+      --transition:    0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'DM Sans', sans-serif;
+      background:var(--off-white);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    a { text-decoration:none; color:inherit; }
+    ul { list-style:none; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background:var(--navy);
+      position:sticky;
+      top:0;
+      z-index:200;
+      box-shadow:0 2px 20px rgba(0,0,0,.4);
+    }
+    .nav-inner {
+      max-width:1280px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .nav-logo {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 0;
+      flex-shrink:0;
+    }
+    .nav-logo img {
+      width:52px; height:52px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,.15);
+    }
+    .nav-logo-text {
+      font-size:13.5px;
+      font-weight:600;
+      color:var(--white);
+      line-height:1.2;
+    }
+    .nav-logo-text span {
+      display:block;
+      font-size:9.5px;
+      font-weight:300;
+      color:var(--silver);
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+    }
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:2px;
+      flex-wrap:wrap;
+    }
+    .nav-links a {
+      color:var(--silver-light);
+      font-size:12.5px;
+      font-weight:500;
+      padding:8px 12px;
+      border-radius:var(--radius-sm);
+      transition:var(--transition);
+      white-space:nowrap;
+      letter-spacing:0.2px;
+    }
+    .nav-links a:hover {
+      color:var(--white);
+      background:rgba(255,255,255,.08);
+    }
+    .nav-links a.active {
+      color:var(--white);
+      background:var(--crimson);
+    }
+
+    /* ── HAMBURGER (mobile) ── */
+    .hamburger {
+      display:none;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
+      padding:8px;
+      border-radius:var(--radius-sm);
+      transition:var(--transition);
+      flex-shrink:0;
+    }
+    .hamburger:hover { background:rgba(255,255,255,.08); }
+    .hamburger span {
+      display:block;
+      width:22px; height:2px;
+      background:var(--silver-light);
+      border-radius:2px;
+      transition:var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+    /* ── MOBILE MENU DROPDOWN ── */
+    .mobile-menu {
+      display:none;
+      background:var(--navy-mid);
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:12px 0;
+    }
+    .mobile-menu.open { display:block; animation:slideDown .25s ease; }
+    @keyframes slideDown {
+      from{ opacity:0; transform:translateY(-8px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+    .mobile-menu a {
+      display:block;
+      color:var(--silver-light);
+      font-size:14px;
+      font-weight:500;
+      padding:12px 24px;
+      border-radius:0;
+      transition:var(--transition);
+      letter-spacing:0.2px;
+    }
+    .mobile-menu a:hover { background:rgba(255,255,255,.06); color:var(--white); }
+    .mobile-menu a.active { color:var(--crimson-vivid); }
+
+    /* ── HERO ── */
+    .hero {
+      background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, var(--crimson) 140%);
+      padding:clamp(48px,8vw,80px) 24px clamp(56px,9vw,88px);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 600px 400px at 80% 50%, rgba(139,21,39,.25) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 10% 80%, rgba(30,48,96,.6) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .hero-grid {
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none;
+    }
+    .hero-content {
+      max-width:720px;
+      margin:0 auto;
+      text-align:center;
+      position:relative;
+      z-index:1;
+    }
+    .hero-logo-img {
+      width:clamp(80px,14vw,110px);
+      height:clamp(80px,14vw,110px);
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(255,255,255,.2);
+      box-shadow:0 8px 32px rgba(0,0,0,.35);
+      margin-bottom:22px;
+      animation:fadeInDown .6s ease both;
+    }
+    @keyframes fadeInDown {
+      from{ opacity:0; transform:translateY(-16px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+    .hero-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:100px;
+      padding:6px 18px;
+      font-size:11px;
+      font-weight:500;
+      color:var(--silver-light);
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      backdrop-filter:blur(10px);
+    }
+    .hero-badge::before {
+      content:'';
+      width:6px; height:6px;
+      background:var(--crimson-vivid);
+      border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100%{ box-shadow:0 0 0 0 rgba(176,30,51,.6); }
+      50%{ box-shadow:0 0 0 6px rgba(176,30,51,0); }
+    }
+    .hero h1 {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(28px,5.5vw,52px);
+      font-weight:700;
+      color:var(--white);
+      line-height:1.15;
+      margin-bottom:16px;
+    }
+    .hero h1 em { font-style:italic; color:var(--silver-light); }
+    .hero p {
+      font-size:clamp(14px,2.2vw,16px);
+      font-weight:300;
+      color:rgba(197,202,211,.85);
+      line-height:1.75;
+      max-width:520px;
+      margin:0 auto;
+    }
+    .hero-divider {
+      width:60px; height:3px;
+      background:linear-gradient(90deg,var(--crimson),var(--crimson-vivid));
+      border-radius:2px;
+      margin:24px auto 0;
+    }
+
+    
+    .middle-logo-wrapper {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:32px auto 40px;
+      width:100%;
+    }
+    .middle-logo-wrapper img {
+      width:clamp(120px,18vw,180px);
+      height:auto;
+      object-fit:contain;
+      display:block;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.12));
+    }
+
+
+    /* ── MAIN ── */
+    .main-section {
+      max-width:820px;
+      margin:0 auto;
+      padding:clamp(36px,6vw,60px) clamp(16px,4vw,24px) clamp(48px,8vw,80px);
+      flex:1;
+      width:100%;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background:var(--white);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-lg);
+      overflow:hidden;
+      animation:slideUp .6s ease both;
+    }
+    @keyframes slideUp {
+      from{ opacity:0; transform:translateY(24px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+    .card-header {
+      background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding:clamp(20px,4vw,32px) clamp(20px,5vw,40px);
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .card-header-icon {
+      width:52px; height:52px;
+      background:var(--crimson);
+      border-radius:var(--radius-md);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    .card-header-icon svg { width:26px; height:26px; fill:var(--white); }
+    .card-header-text h2 {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(18px,3vw,22px);
+      color:var(--white);
+      font-weight:600;
+      margin-bottom:4px;
+    }
+    .card-header-text p {
+      font-size:13px;
+      color:var(--silver);
+      font-weight:300;
+    }
+
+    /* ── FORM BODY ── */
+    .form-body { padding:clamp(20px,5vw,40px); }
+
+    .form-row {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    /* floating label fields */
+    .field {
+      position:relative;
+      margin-bottom:24px;
+    }
+    .field label {
+      position:absolute;
+      top:16px; left:16px;
+      font-size:14px;
+      color:var(--silver);
+      font-weight:400;
+      pointer-events:none;
+      transition:var(--transition);
+      background:var(--white);
+      padding:0 4px;
+      border-radius:3px;
+      line-height:1;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width:100%;
+      border:2px solid var(--border);
+      border-radius:var(--radius-md);
+      padding:16px 16px 8px;
+      font-family:'DM Sans', sans-serif;
+      font-size:15px;
+      color:var(--text);
+      background:var(--white);
+      transition:var(--transition);
+      outline:none;
+      appearance:none;
+      -webkit-appearance:none;
+    }
+    .field textarea {
+      resize:vertical;
+      min-height:140px;
+      padding-top:22px;
+    }
+    .field select { padding:13px 16px; cursor:pointer; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color:var(--crimson);
+      box-shadow:0 0 0 4px rgba(139,21,39,.08);
+    }
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label,
+    .field textarea:focus + label,
+    .field textarea:not(:placeholder-shown) + label {
+      top:-8px; left:12px;
+      font-size:11px;
+      color:var(--crimson);
+      font-weight:600;
+      letter-spacing:0.3px;
+    }
+    .field.select-field label {
+      top:-8px; left:12px;
+      font-size:11px;
+      color:var(--text-soft);
+      font-weight:600;
+      letter-spacing:0.3px;
+    }
+    .field.select-field::after {
+      content:'';
+      position:absolute;
+      right:16px; top:50%;
+      transform:translateY(-50%);
+      width:0; height:0;
+      border-left:5px solid transparent;
+      border-right:5px solid transparent;
+      border-top:6px solid var(--silver);
+      pointer-events:none;
+    }
+
+    /* ── STAR RATING ── */
+    .rating-block {
+      background:var(--off-white);
+      border:2px solid var(--border);
+      border-radius:var(--radius-md);
+      padding:clamp(16px,3vw,22px) clamp(16px,4vw,24px);
+      margin-bottom:24px;
+      transition:var(--transition);
+    }
+    .rating-block:hover { border-color:var(--silver-light); }
+    .rating-label {
+      font-size:12px;
+      font-weight:600;
+      color:var(--text-soft);
+      letter-spacing:0.6px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .stars {
+      display:flex;
+      gap:6px;
+      flex-direction:row-reverse;
+      width:fit-content;
+    }
+    .stars input { display:none; }
+    .stars label {
+      font-size:clamp(26px,5vw,34px);
+      color:#DDE3EF;
+      cursor:pointer;
+      transition:color .15s, transform .15s;
+      line-height:1;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label,
+    .stars input:checked ~ label { color:#F4B942; }
+    .stars label:hover { transform:scale(1.15); }
+    .rating-hint {
+      font-size:12.5px;
+      color:var(--silver);
+      margin-top:10px;
+      font-style:italic;
+    }
+
+    /* ── CHAR COUNTER ── */
+    .char-counter {
+      text-align:right;
+      font-size:12px;
+      color:var(--silver);
+      margin-top:-18px;
+      margin-bottom:24px;
+      transition:color .2s;
+    }
+    .char-counter.warn { color:#E8A020; }
+    .char-counter.over { color:var(--crimson); }
+
+    /* ── SUBMIT BTN ── */
+    .submit-btn {
+      width:100%;
+      padding:clamp(14px,2.5vw,17px);
+      background:linear-gradient(135deg, var(--crimson) 0%, var(--crimson-vivid) 100%);
+      color:var(--white);
+      border:none;
+      border-radius:var(--radius-md);
+      font-family:'DM Sans', sans-serif;
+      font-size:clamp(14px,2.5vw,16px);
+      font-weight:600;
+      cursor:pointer;
+      transition:var(--transition);
+      position:relative;
+      overflow:hidden;
+      letter-spacing:0.3px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .submit-btn::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+      opacity:0;
+      transition:var(--transition);
+    }
+    .submit-btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 8px 28px rgba(139,21,39,.4);
+    }
+    .submit-btn:hover::before { opacity:1; }
+    .submit-btn:active { transform:translateY(0); }
+    .submit-btn svg { width:20px; height:20px; fill:var(--white); }
+    .submit-btn.loading { pointer-events:none; opacity:.8; }
+
+    /* ── SUCCESS ── */
+    .success-overlay {
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:clamp(40px,8vw,60px) clamp(20px,5vw,40px);
+      text-align:center;
+    }
+    .success-overlay.show { display:flex; animation:fadeIn .5s ease; }
+    @keyframes fadeIn {
+      from{ opacity:0; transform:scale(.95); }
+      to  { opacity:1; transform:scale(1); }
+    }
+    .success-circle {
+      width:90px; height:90px;
+      background:linear-gradient(135deg,#1e8c4a,#27a85e);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:28px;
+      animation:popIn .5s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn {
+      from{ transform:scale(0); }
+      to  { transform:scale(1); }
+    }
+    .success-circle svg {
+      width:42px; height:42px;
+      stroke:var(--white);
+      stroke-width:2.5;
+      fill:none;
+      stroke-dasharray:60;
+      stroke-dashoffset:60;
+      animation:drawCheck .6s .3s ease forwards;
+    }
+    @keyframes drawCheck {
+      to{ stroke-dashoffset:0; }
+    }
+    .success-overlay h3 {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(20px,4vw,26px);
+      color:var(--text);
+      margin-bottom:12px;
+    }
+    .success-overlay p {
+      font-size:clamp(13px,2.5vw,15px);
+      color:var(--text-soft);
+      line-height:1.75;
+      max-width:380px;
+      margin-bottom:32px;
+    }
+    .success-back-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 28px;
+      background:var(--navy);
+      color:var(--white);
+      border-radius:var(--radius-md);
+      font-size:14px;
+      font-weight:500;
+      cursor:pointer;
+      border:none;
+      font-family:'DM Sans', sans-serif;
+      transition:var(--transition);
+    }
+    .success-back-btn:hover {
+      background:var(--navy-light);
+      transform:translateY(-1px);
+    }
+
+    /* ── INFO STRIP ── */
+    .info-strip {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:28px;
+    }
+    .info-card {
+      background:var(--white);
+      border:2px solid var(--border);
+      border-radius:var(--radius-md);
+      padding:clamp(16px,3vw,22px);
+      text-align:center;
+      transition:var(--transition);
+    }
+    .info-card:hover {
+      border-color:var(--crimson);
+      box-shadow:var(--shadow-sm);
+      transform:translateY(-2px);
+    }
+    .info-card-icon {
+      width:44px; height:44px;
+      background:var(--crimson-pale);
+      border-radius:10px;
+      margin:0 auto 12px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .info-card-icon svg { width:22px; height:22px; stroke:var(--crimson); fill:none; stroke-width:1.8; }
+    .info-card h4 { font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px; }
+    .info-card p { font-size:12px; color:var(--text-soft); line-height:1.55; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background:var(--navy);
+      color:var(--silver-light);
+      margin-top:auto;
+    }
+    .footer-top {
+      max-width:1280px;
+      margin:0 auto;
+      padding:clamp(40px,6vw,56px) clamp(16px,4vw,24px) clamp(32px,5vw,40px);
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:clamp(24px,4vw,40px);
+    }
+    .footer-brand-name {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:16px;
+    }
+    .footer-logo-img {
+      width:52px; height:52px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,.15);
+      flex-shrink:0;
+    }
+    .footer-brand-name strong {
+      font-size:14px;
+      font-weight:600;
+      color:var(--white);
+      line-height:1.2;
+    }
+    .footer-brand-name span {
+      font-size:9.5px;
+      font-weight:300;
+      color:var(--silver);
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      display:block;
+    }
+    .footer-brand > p {
+      font-size:13px;
+      font-weight:300;
+      line-height:1.7;
+      color:var(--silver);
+      margin-bottom:18px;
+    }
+    .footer-contact-item {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      color:var(--silver);
+      margin-bottom:8px;
+    }
+    .footer-contact-item svg {
+      width:14px; height:14px;
+      stroke:var(--crimson-vivid);
+      fill:none; stroke-width:2;
+      flex-shrink:0;
+    }
+    .footer-col h4 {
+      font-size:11px;
+      font-weight:600;
+      color:var(--white);
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      padding-bottom:10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .footer-col ul li { margin-bottom:10px; }
+    .footer-col ul li a {
+      font-size:13px;
+      color:var(--silver);
+      font-weight:300;
+      transition:color .2s;
+      display:flex; align-items:center; gap:6px;
+    }
+    .footer-col ul li a::before {
+      content:'›';
+      color:var(--crimson-vivid);
+      font-size:16px;
+      line-height:1;
+    }
+    .footer-col ul li a:hover { color:var(--white); }
+    .social-icons {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .social-icon {
+      width:38px; height:38px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:8px;
+      display:flex; align-items:center; justify-content:center;
+      transition:var(--transition);
+      flex-shrink:0;
+    }
+    .social-icon:hover {
+      background:var(--crimson);
+      border-color:var(--crimson);
+      transform:translateY(-2px);
+    }
+    .social-icon svg { width:17px; height:17px; }
+    .social-icon:hover svg { fill:var(--white) !important; stroke:var(--white) !important; }
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:18px clamp(16px,4vw,24px);
+      text-align:center;
+      font-size:12.5px;
+      color:rgba(157,168,183,.6);
+      font-weight:300;
+    }
+    .footer-bottom span { color:var(--crimson-vivid); }
+
+    /* ════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+    ════════════════════════════════ */
+
+    /* Desktop wide  ≥1100px → full layout (default above) */
+
+    /* Tablet Landscape  900–1099px */
+    @media(max-width:1099px) {
+      .footer-top {
+        grid-template-columns:1fr 1fr;
+        gap:32px;
+      }
+    }
+
+    /* Tablet Portrait / iPad  600–899px */
+    @media(max-width:899px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .form-row { grid-template-columns:1fr 1fr; }
+      .info-strip { grid-template-columns:1fr 1fr; }
+      .footer-top { grid-template-columns:1fr 1fr; gap:28px; }
+    }
+
+    /* Large Mobile  480–599px */
+    @media(max-width:599px) {
+      .form-row { grid-template-columns:1fr; }
+      .info-strip { grid-template-columns:1fr; }
+      .footer-top { grid-template-columns:1fr; gap:24px; }
+      .card-header { flex-direction:row; align-items:flex-start; }
+    }
+
+    /* Small Mobile  ≤479px */
+    @media(max-width:479px) {
+      .hero { padding:40px 16px 48px; }
+      .main-section { padding:28px 14px 56px; }
+      .form-body { padding:20px 16px; }
+      .card-header { padding:20px 16px; gap:12px; }
+      .form-row { grid-template-columns:1fr; gap:0; }
+      .info-strip { grid-template-columns:1fr; gap:12px; }
+      .footer-top { grid-template-columns:1fr; gap:20px; padding:32px 16px; }
+      .nav-inner { padding:0 16px; }
+    }
+
+    /* ── SPIN + SHAKE animations ── */
+    @keyframes spin {
+      to { transform:rotate(360deg); }
+    }
+    @keyframes shake {
+      0%,100%{ transform:translateX(0); }
+      20%{ transform:translateX(-6px); }
+      40%{ transform:translateX(6px); }
+      60%{ transform:translateX(-4px); }
+      80%{ transform:translateX(4px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="visiontech.png" alt="Vision Tech Solutions Logo" />
+      <div class="nav-logo-text">
+        Vision Tech Solutions
+        <span>Innovate · Connect · Secure</span>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html" class="active">Feedback</a>
+      <a href="careers.html">Careers</a>
+      <a href="support.html">Support / FAQ</a>
+    </div>
+
+    <!-- Hamburger (mobile/tablet) -->
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html" class="active">Feedback</a>
+    <a href="careers.html">Careers</a>
+    <a href="support.html">Support / FAQ</a>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <img src="visiontech.png" alt="Vision Tech Solutions" class="hero-logo-img" />
+    <div class="hero-badge">Customer Feedback</div>
+    <h1>Share Your <em>Experience</em><br>With Us</h1>
+    <p>Your feedback helps us grow, improve, and deliver better IT solutions. We read every message and genuinely value what you have to say.</p>
+    <div class="hero-divider"></div>
+  </div>
+</section>
+
+<!-- ══════════ MAIN ══════════ -->
+<main class="main-section">
+
+  <div class="form-card" id="formCard">
+
+    <!-- Card Header -->
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="card-header-text">
+        <h2>Feedback Form</h2>
+        <p>All fields required — your message goes directly to our team</p>
+      </div>
+    </div>
+
+    <!-- Form Body -->
+    <div class="form-body" id="formBody">
+      <form id="feedbackForm" novalidate>
+
+        <!-- Name + Email -->
+        <div class="form-row">
+          <div class="field">
+            <input type="text" id="custName" name="custName" placeholder=" " required autocomplete="name" />
+            <label for="custName">Customer Name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="custEmail" name="custEmail" placeholder=" " required autocomplete="email" />
+            <label for="custEmail">Email Address</label>
+          </div>
+        </div>
+
+        <!-- Subject -->
+        <div class="field select-field">
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected></option>
+            <option value="Website Development">Website Development</option>
+            <option value="Mobile App Development">Mobile App Development</option>
+            <option value="Networking Services">Networking Services</option>
+            <option value="Cybersecurity Services">Cybersecurity Services</option>
+            <option value="Software Installation">Software Installation</option>
+            <option value="System Maintenance">System Maintenance</option>
+            <option value="IT Consultation">IT Consultation</option>
+            <option value="General Feedback">General Feedback</option>
+            <option value="Other">Other</option>
+          </select>
+          <label for="subject">Subject / Service Area</label>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="rating-block">
+          <div class="rating-label">Rate Your Experience</div>
+          <div class="stars" role="radiogroup">
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Excellent">★</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Good">★</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Average">★</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">★</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Terrible">★</label>
+          </div>
+          <div class="rating-hint" id="ratingHint">Click a star to rate us</div>
+        </div>
+
+        <!-- Message -->
+        <div class="field">
+          <textarea id="message" name="message" placeholder=" " required maxlength="1000"></textarea>
+          <label for="message">Feedback Message</label>
+        </div>
+        <div class="char-counter" id="charCounter">0 / 1000 characters</div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Send Feedback
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Success Overlay -->
+    <div class="success-overlay" id="successOverlay">
+      <div class="success-circle">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Thank you for your feedback!</h3>
+      <p>Your message has been received and forwarded to our team at Vision Tech Solutions. We appreciate you taking the time to share your thoughts.</p>
+      <button class="success-back-btn" onclick="resetForm()">← Submit Another Response</button>
+    </div>
+
+  </div><!-- /form-card -->
+
+  <!-- Info Strip -->
+  <div class="info-strip">
+    <div class="info-card">
+      <div class="info-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Private &amp; Secure</h4>
+      <p>Your details are kept confidential and never shared with third parties.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Quick Response</h4>
+      <p>Our team reviews feedback within 24–48 hours and acts on your suggestions.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Heard by Humans</h4>
+      <p>Every submission is read by a real person — your voice truly matters to us.</p>
+    </div>
+  
+    <div class="info-card">
+      <div class="info-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Customer Focused</h4>
+      <p>We continuously improve our services based on the valuable feedback shared by our clients.</p>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="site-footer">
+  <div class="footer-top">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-brand-name">
+        <img src="visiontech.png" alt="Vision Tech Solutions Logo" class="footer-logo-img" />
+        <div>
+          <strong>Vision Tech Solutions</strong>
+          <span>Innovate · Connect · Secure</span>
+        </div>
+      </div>
+      <p>Professional IT services including website development, networking, cybersecurity, and custom software solutions for businesses across Uganda and beyond.</p>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        visiontechsolutions@gmail.com
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +256 XXX XXX XXX
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Kampala, Uganda
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="support.html">Support / FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="services.html">Website Development</a></li>
+        <li><a href="services.html">Mobile App Development</a></li>
+        <li><a href="services.html">Networking Solutions</a></li>
+        <li><a href="services.html">Cybersecurity</a></li>
+        <li><a href="services.html">Software Installation</a></li>
+        <li><a href="services.html">IT Consultation</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a class="social-icon" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="#9DA8B7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a class="social-icon" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter/X">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9DA8B7" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        </a>
+        <a class="social-icon" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9DA8B7" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="#9DA8B7"/></svg>
+        </a>
+        <a class="social-icon" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="#9DA8B7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <p style="font-size:12px;color:var(--silver);margin-top:16px;line-height:1.6;">Stay connected for updates, tech tips, and company news.</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 <span>Vision Tech Solutions</span>. All Rights Reserved. &nbsp;·&nbsp; Kampala, Uganda</p>
+  </div>
+</footer>
+
+<!-- ══════════ JAVASCRIPT ══════════ -->
+<script>
+  /* Hamburger toggle */
+  function toggleMenu() {
+    const ham = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  }
+  /* Close menu when a link is clicked */
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
+  /* Char counter */
+  const msgArea   = document.getElementById('message');
+  const charCount = document.getElementById('charCounter');
+  msgArea.addEventListener('input', () => {
+    const len = msgArea.value.length;
+    charCount.textContent = `${len} / 1000 characters`;
+    charCount.className = 'char-counter' + (len > 900 ? ' over' : len > 750 ? ' warn' : '');
+  });
+
+  /* Star rating hints */
+  const hints = ['','Terrible – we need to do much better','Poor – we will work on it','Average – room for improvement','Good – we are glad you are happy','Excellent – thank you so much!'];
+  document.querySelectorAll('.stars input').forEach(inp => {
+    inp.addEventListener('change', () => {
+      document.getElementById('ratingHint').textContent = hints[+inp.value];
+    });
+  });
+
+  /* Form submit */
+  const form    = document.getElementById('feedbackForm');
+  const body    = document.getElementById('formBody');
+  const success = document.getElementById('successOverlay');
+  const btn     = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('custName').value.trim();
+    const email   = document.getElementById('custEmail').value.trim();
+    const subject = document.getElementById('subject').value;
+    const msg     = document.getElementById('message').value.trim();
+
+    if (!name || !email || !subject || !msg) { shake(btn); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      shake(document.getElementById('custEmail').parentElement);
+      return;
+    }
+
+    btn.classList.add('loading');
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="animation:spin 1s linear infinite;width:20px;height:20px"><circle cx="12" cy="12" r="10" stroke-opacity=".3"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Sending…`;
+
+    setTimeout(() => {
+      body.style.display = 'none';
+      success.classList.add('show');
+    }, 1600);
+  });
+
+  function shake(el) {
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = 'shake .4s ease';
+  }
+
+  function resetForm() {
+    form.reset();
+    charCount.textContent = '0 / 1000 characters';
+    charCount.className = 'char-counter';
+    document.getElementById('ratingHint').textContent = 'Click a star to rate us';
+    btn.classList.remove('loading');
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="white"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg> Send Feedback`;
+    success.classList.remove('show');
+    body.style.display = '';
+  }
+</script>
+
+</body>
+</html>
