@@ -7,9 +7,11 @@
 <style>
   :root {
     --maroon: #8B1E2D;
+    --maroon-bright: #C42A3B;
     --maroon-dark: #6E1622;
-    --navy: #1B2D4F;
-    --navy-dark: #122039;
+    --navy: #0F1B33;
+    --navy-mid: #1B2D4F;
+    --navy-dark: #0A1326;
     --silver: #A8A8A8;
     --silver-light: #E6E6E6;
     --bg: #F7F7F9;
@@ -19,7 +21,6 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--bg);
@@ -27,85 +28,84 @@
     line-height: 1.6;
   }
 
-  /* ---------- STANDARD NAVIGATION BAR (TEAM STANDARD) ---------- */
+  /* =================== NAVBAR =================== */
   nav.main-nav {
     background: var(--navy);
-    padding: 1rem 2rem;
+    padding: 0.85rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     flex-wrap: wrap;
     gap: 1rem;
+    border-bottom: 2px solid rgba(255,255,255,0.05);
   }
   nav.main-nav .brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: 0.5px;
+    gap: 0.85rem;
     text-decoration: none;
   }
   nav.main-nav .brand .nav-logo {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     display: block;
+    flex-shrink: 0;
   }
-
+  nav.main-nav .brand .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  nav.main-nav .brand .brand-name {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.3px;
+  }
+  nav.main-nav .brand .brand-tag {
+    color: var(--silver);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
   nav.main-nav .nav-links {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.25rem 0.75rem;
+    gap: 1.75rem;
+    list-style: none;
   }
   nav.main-nav .nav-links a {
     color: var(--white);
     text-decoration: none;
-    font-weight: 500;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: color 0.2s, background 0.2s;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
   }
-  nav.main-nav .nav-links a:hover { color: var(--silver); }
+  nav.main-nav .nav-links a:hover { color: var(--maroon-bright); }
   nav.main-nav .nav-links a.active {
-    background: var(--maroon);
-    color: var(--white);
+    color: var(--maroon-bright);
+    border-bottom-color: var(--maroon-bright);
   }
-  nav.main-nav .nav-links .sep { color: var(--silver); }
 
-  /* ---------- HERO ---------- */
+  /* =================== HERO =================== */
   .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 60%, var(--maroon) 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--maroon) 100%);
     color: var(--white);
     text-align: center;
-    padding: 4.5rem 1.5rem 5rem;
-    position: relative;
-  }
-  .hero-logo {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 1.5rem;
-    display: block;
-    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+    padding: 4rem 1.5rem 5rem;
   }
   .hero h1 {
     font-size: 2.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     letter-spacing: 0.5px;
   }
-  .hero .tagline {
-    color: var(--silver);
-    font-size: 0.95rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-  .hero .tagline span { color: var(--maroon); margin: 0 0.5rem; }
   .hero p {
     max-width: 720px;
     margin: 0 auto;
@@ -113,9 +113,8 @@
     color: #DDE2EC;
   }
 
-  /* ---------- LAYOUT ---------- */
+  /* =================== MAIN =================== */
   main { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
-
   .section { margin-bottom: 3.5rem; }
   .section-header {
     display: flex;
@@ -130,27 +129,20 @@
     background: var(--maroon);
     border-radius: 3px;
   }
-  .section-header h2 {
-    color: var(--navy);
-    font-size: 1.75rem;
-  }
-  .lead {
-    color: var(--muted);
-    font-size: 1.05rem;
-    margin-bottom: 1.5rem;
-  }
+  .section-header h2 { color: var(--navy-mid); font-size: 1.75rem; }
+  .lead { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.5rem; }
   .purpose-note {
     background: #EDF0F5;
-    border-left: 4px solid var(--navy);
+    border-left: 4px solid var(--navy-mid);
     padding: 0.75rem 1rem;
     margin-top: 1rem;
     font-size: 0.95rem;
     color: var(--muted);
     border-radius: 4px;
   }
-  .purpose-note strong { color: var(--navy); }
+  .purpose-note strong { color: var(--navy-mid); }
 
-  /* ---------- CARD GRID ---------- */
+  /* =================== CARD GRID =================== */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -164,27 +156,20 @@
     border-top: 4px solid var(--maroon);
     transition: transform 0.2s, box-shadow 0.2s;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(27,45,79,0.15);
-  }
-  .card.navy-top { border-top-color: var(--navy); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(27,45,79,0.15); }
+  .card.navy-top { border-top-color: var(--navy-mid); }
   .card .icon {
     width: 48px; height: 48px;
     border-radius: 8px;
     background: var(--silver-light);
-    color: var(--navy);
+    color: var(--navy-mid);
     display: flex; align-items: center; justify-content: center;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: bold;
   }
   .card.navy-top .icon { color: var(--maroon); }
-  .card h3 {
-    color: var(--navy);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
+  .card h3 { color: var(--navy-mid); font-size: 1.2rem; margin-bottom: 0.5rem; }
   .card .tag {
     display: inline-block;
     font-size: 0.75rem;
@@ -197,23 +182,17 @@
     border-radius: 4px;
     margin-bottom: 0.75rem;
   }
-  .card.navy-top .tag { background: var(--navy); }
+  .card.navy-top .tag { background: var(--navy-mid); }
   .card p { color: var(--muted); font-size: 0.95rem; }
 
-  /* ---------- QUALIFICATIONS ---------- */
-  .qual-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-  }
+  /* =================== QUALIFICATIONS =================== */
+  .qual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
   .qual-item {
     background: var(--white);
-    border-left: 4px solid var(--navy);
+    border-left: 4px solid var(--navy-mid);
     padding: 1rem 1.25rem;
     border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
     font-weight: 500;
   }
   .qual-item .check {
@@ -226,9 +205,9 @@
     flex-shrink: 0;
   }
 
-  /* ---------- APPLICATION ---------- */
+  /* =================== APPLICATION =================== */
   .apply-box {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--maroon) 100%);
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--maroon) 100%);
     color: var(--white);
     border-radius: 12px;
     padding: 2.5rem;
@@ -237,13 +216,7 @@
   }
   .apply-box h2 { color: var(--white); margin-bottom: 0.75rem; font-size: 1.75rem; }
   .apply-box p { color: #E6E9F0; margin-bottom: 1.5rem; }
-  .requirements {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 1.5rem 0;
-  }
+  .requirements { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0; }
   .req-chip {
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.25);
@@ -264,194 +237,165 @@
     transition: background 0.2s, color 0.2s, transform 0.2s;
     border: 2px solid var(--white);
   }
-  .btn:hover {
-    background: transparent;
-    color: var(--white);
-    transform: scale(1.03);
-  }
+  .btn:hover { background: transparent; color: var(--white); transform: scale(1.03); }
 
-  /* ---------- STANDARD FOOTER (TEAM STANDARD) ---------- */
+  /* =================== FOOTER =================== */
   footer {
-    background: var(--navy-dark);
+    background: var(--navy);
     color: var(--silver-light);
-    border-top: 4px solid var(--maroon);
-    padding: 2.5rem 1.5rem 1.25rem;
+    border-top: 2px solid rgba(255,255,255,0.05);
     margin-top: 2rem;
   }
+
+  .footer-cta {
+    text-align: center;
+    padding: 3.5rem 1.5rem 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-cta h2 {
+    color: var(--white);
+    font-size: 1.85rem;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+  }
+  .footer-cta p {
+    color: var(--silver-light);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--maroon-bright);
+    color: var(--white);
+    padding: 0.85rem 2.25rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(196,42,59,0.35);
+  }
+  .cta-btn:hover { background: var(--maroon); transform: translateY(-2px); }
+
   .footer-grid {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-  }
-  .footer-col h3, .footer-col h4 {
-    color: var(--white);
-    margin-bottom: 0.85rem;
+    gap: 2.5rem;
+    padding: 3rem 1.5rem 2rem;
   }
   .footer-col h3 {
-    font-size: 1.25rem;
-    border-bottom: 2px solid var(--maroon);
-    padding-bottom: 0.4rem;
-    display: inline-block;
+    color: var(--maroon-bright);
+    font-size: 1.1rem;
+    margin-bottom: 1.1rem;
+    font-weight: 800;
   }
-  .footer-col p, .footer-col a {
+  .footer-col p, .footer-col a, .footer-col li {
     color: var(--silver-light);
     font-size: 0.92rem;
     text-decoration: none;
-    line-height: 1.9;
+    line-height: 2;
   }
-  .footer-col a:hover { color: var(--white); }
-  .footer-col .quick-links {
-    list-style: none;
-  }
-  .footer-col .quick-links li { line-height: 1.9; }
-
-  .socials {
+  .footer-col p { line-height: 1.7; margin-bottom: 1rem; }
+  .footer-col .quick-links { list-style: none; }
+  .footer-col .quick-links a { display: block; transition: color 0.2s, padding-left 0.2s; }
+  .footer-col .quick-links a:hover { color: var(--maroon-bright); padding-left: 4px; }
+  .footer-col .contact-line {
     display: flex;
+    align-items: flex-start;
     gap: 0.6rem;
-    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
+  .footer-col .contact-line svg { width: 14px; height: 14px; fill: var(--silver-light); flex-shrink: 0; margin-top: 5px; }
+  .footer-col .contact-line a { line-height: 1.6; }
+
+  .socials { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
   .socials a {
-    width: 36px; height: 36px;
+    width: 38px; height: 38px;
     border-radius: 50%;
-    background: var(--maroon);
+    background: var(--maroon-bright);
     color: var(--white);
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s, transform 0.2s;
   }
-  .socials a:hover {
-    background: var(--white);
-    color: var(--maroon);
-    transform: translateY(-2px);
-  }
-  .socials svg { width: 18px; height: 18px; fill: currentColor; }
+  .socials a:hover { background: var(--maroon); transform: translateY(-3px); }
+  .socials svg { width: 17px; height: 17px; fill: currentColor; }
 
   .footer-bottom {
     text-align: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 1.25rem 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 0.88rem;
     color: var(--silver);
   }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 700px) {
-    nav.main-nav { flex-direction: column; padding: 1rem; }
-    nav.main-nav .nav-links { justify-content: center; }
-    nav.main-nav .nav-links .sep { display: none; }
+  /* =================== RESPONSIVE =================== */
+  @media (max-width: 800px) {
+    nav.main-nav { flex-direction: column; padding: 1rem; align-items: flex-start; }
+    nav.main-nav .nav-links { gap: 1rem 1.25rem; justify-content: center; width: 100%; }
     .hero h1 { font-size: 2rem; }
-    .hero .tagline { font-size: 0.8rem; letter-spacing: 2px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ============== INLINE SVG LOGO (REUSABLE) ============== -->
+<!-- ===== INLINE SVG LOGO ===== -->
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
   <defs>
-    <clipPath id="vt-circle-mask">
-      <circle cx="120" cy="120" r="115"/>
-    </clipPath>
+    <clipPath id="vt-circle-mask"><circle cx="120" cy="120" r="115"/></clipPath>
     <symbol id="vt-logo" viewBox="0 0 240 240">
-      <!-- White interior -->
       <circle cx="120" cy="120" r="115" fill="#FFFFFF"/>
-
-      <!-- Navy bottom band (clipped to circle) -->
       <g clip-path="url(#vt-circle-mask)">
         <path d="M 0,160 Q 60,148 120,154 T 240,160 L 240,240 L 0,240 Z" fill="#1B2D4F"/>
       </g>
-
-      <!-- Outer maroon ring -->
       <circle cx="120" cy="120" r="115" fill="none" stroke="#8B1E2D" stroke-width="5"/>
-      <!-- Inner silver ring -->
       <circle cx="120" cy="120" r="107" fill="none" stroke="#A8A8A8" stroke-width="1.5"/>
-
-      <!-- Decorative arcs above VT -->
       <path d="M 78,52 Q 122,18 168,55" fill="none" stroke="#8B1E2D" stroke-width="3.5" stroke-linecap="round"/>
       <path d="M 82,58 Q 124,28 172,62" fill="none" stroke="#A8A8A8" stroke-width="3.5" stroke-linecap="round"/>
       <circle cx="174" cy="58" r="4" fill="#8B1E2D"/>
-
-      <!-- Large VT monogram -->
       <text x="118" y="120" text-anchor="end" font-family="'Arial Black', Impact, sans-serif" font-size="82" font-weight="900" fill="#8B1E2D">V</text>
       <text x="122" y="120" text-anchor="start" font-family="'Arial Black', Impact, sans-serif" font-size="82" font-weight="900" fill="#1B2D4F">T</text>
-
-      <!-- VISION TECH -->
       <text x="120" y="146" text-anchor="middle" font-family="'Arial Black', Impact, sans-serif" font-size="18" font-weight="900" letter-spacing="0.5">
         <tspan fill="#8B1E2D">VISION </tspan><tspan fill="#1B2D4F">TECH</tspan>
       </text>
-
-      <!-- SOLUTIONS with side lines -->
       <line x1="58" y1="156" x2="82" y2="156" stroke="#A8A8A8" stroke-width="1.5"/>
       <text x="120" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#A8A8A8" letter-spacing="3">SOLUTIONS</text>
       <line x1="158" y1="156" x2="182" y2="156" stroke="#A8A8A8" stroke-width="1.5"/>
-
-      <!-- Three icons in navy band -->
-      <!-- Monitor with </> -->
-      <g transform="translate(78, 190)">
-        <rect x="-13" y="-10" width="26" height="17" rx="1.5" fill="none" stroke="#D9D9D9" stroke-width="1.4"/>
-        <rect x="-5" y="9" width="10" height="2" fill="#D9D9D9"/>
-        <text x="0" y="2" text-anchor="middle" font-family="monospace" font-size="9" fill="#8B1E2D" font-weight="bold">&lt;/&gt;</text>
-      </g>
-      <line x1="100" y1="180" x2="100" y2="202" stroke="#A8A8A8" stroke-width="0.8"/>
-
-      <!-- Globe / network -->
-      <g transform="translate(120, 190)" stroke="#D9D9D9" stroke-width="1.3" fill="none">
-        <circle r="11"/>
-        <ellipse rx="4.5" ry="11"/>
-        <line x1="-11" y1="0" x2="11" y2="0"/>
-        <circle cx="-7" cy="-6" r="1.6" fill="#D9D9D9" stroke="none"/>
-        <circle cx="7" cy="6" r="1.6" fill="#D9D9D9" stroke="none"/>
-        <circle cx="0" cy="-9" r="1.6" fill="#D9D9D9" stroke="none"/>
-        <circle cx="0" cy="9" r="1.6" fill="#D9D9D9" stroke="none"/>
-      </g>
-      <line x1="140" y1="180" x2="140" y2="202" stroke="#A8A8A8" stroke-width="0.8"/>
-
-      <!-- Shield with padlock -->
-      <g transform="translate(162, 190)">
-        <path d="M -10,-10 L 10,-10 L 10,3 Q 10,10 0,13 Q -10,10 -10,3 Z" fill="none" stroke="#D9D9D9" stroke-width="1.4"/>
-        <path d="M -3,-3 L -3,-5 Q -3,-7 0,-7 Q 3,-7 3,-5 L 3,-3" fill="none" stroke="#D9D9D9" stroke-width="1.2"/>
-        <rect x="-3.5" y="-3" width="7" height="7" fill="#D9D9D9" rx="0.5"/>
-      </g>
-
-      <!-- Tagline -->
-      <text x="120" y="223" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="600" fill="#E6E6E6" letter-spacing="2">
-        INNOVATE <tspan fill="#8B1E2D">&#8226;</tspan> CONNECT <tspan fill="#8B1E2D">&#8226;</tspan> SECURE
-      </text>
     </symbol>
   </defs>
 </svg>
 
-<!-- ============== STANDARD NAVIGATION BAR ============== -->
+<!-- ===== NAVIGATION ===== -->
 <nav class="main-nav">
   <a href="index.html" class="brand">
     <svg class="nav-logo" aria-label="Vision Tech Solutions Logo"><use href="#vt-logo"/></svg>
-    Vision Tech Solutions
+    <div class="brand-text">
+      <span class="brand-name">Vision Tech Solutions</span>
+      <span class="brand-tag">Innovation Meets Technology</span>
+    </div>
   </a>
-  <div class="nav-links">
-    <a href="index.html">Home</a><span class="sep">|</span>
-    <a href="about.html">About Us</a><span class="sep">|</span>
-    <a href="services.html">Services</a><span class="sep">|</span>
-    <a href="products.html">Products</a><span class="sep">|</span>
-    <a href="contact.html">Contact</a><span class="sep">|</span>
-    <a href="feedback.html">Feedback</a><span class="sep">|</span>
-    <a href="careers.html" class="active">Careers</a><span class="sep">|</span>
-    <a href="support.html">Support/FAQ</a>
-  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="feedback.html">Feedback</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
+    <li><a href="support.html">Support</a></li>
+  </ul>
 </nav>
 
-<!-- ============== HERO ============== -->
+<!-- ===== HERO ===== -->
 <header class="hero">
-  <svg class="hero-logo" aria-label="Vision Tech Solutions Logo"><use href="#vt-logo"/></svg>
   <h1>Careers at Vision Tech Solutions</h1>
-  <p class="tagline">Innovate <span>&bull;</span> Connect <span>&bull;</span> Secure</p>
   <p>Explore internship and job opportunities at Vision Tech Solutions. Learn about available positions, the qualifications we look for, and how to apply.</p>
 </header>
 
 <main>
 
-  <!-- ============== INTERNSHIP OPPORTUNITIES ============== -->
+  <!-- ===== INTERNSHIPS ===== -->
   <section class="section">
     <div class="section-header">
       <div class="bar"></div>
@@ -466,7 +410,6 @@
         <h3>Web Development Intern</h3>
         <p>Assist in building and maintaining responsive websites using HTML, CSS, and basic JavaScript under the guidance of our developers.</p>
       </div>
-
       <div class="card">
         <div class="icon">&#9881;</div>
         <span class="tag">Internship</span>
@@ -474,13 +417,10 @@
         <p>Learn to troubleshoot hardware, software, and network issues while providing day-to-day technical support to clients.</p>
       </div>
     </div>
-
-    <div class="purpose-note">
-      <strong>Purpose:</strong> Helps students and beginners gain experience in the IT field.
-    </div>
+    <div class="purpose-note"><strong>Purpose:</strong> Helps students and beginners gain experience in the IT field.</div>
   </section>
 
-  <!-- ============== AVAILABLE JOBS ============== -->
+  <!-- ===== JOBS ===== -->
   <section class="section">
     <div class="section-header">
       <div class="bar"></div>
@@ -495,14 +435,12 @@
         <h3>Website Developer</h3>
         <p>Design, develop, and maintain professional websites for businesses, schools, hospitals, and organizations.</p>
       </div>
-
       <div class="card navy-top">
         <div class="icon">&#127760;</div>
         <span class="tag">Full Time</span>
         <h3>Network Technician</h3>
-        <p>Install, configure, and maintain networks — including router setup, LAN configuration, and internet troubleshooting.</p>
+        <p>Install, configure, and maintain networks &mdash; including router setup, LAN configuration, and internet troubleshooting.</p>
       </div>
-
       <div class="card navy-top">
         <div class="icon">&#128187;</div>
         <span class="tag">Full Time</span>
@@ -510,13 +448,10 @@
         <p>Provide first-line technical support, resolve user issues, and help maintain smooth daily IT operations.</p>
       </div>
     </div>
-
-    <div class="purpose-note">
-      <strong>Purpose:</strong> Shows employment opportunities offered by the company.
-    </div>
+    <div class="purpose-note"><strong>Purpose:</strong> Shows employment opportunities offered by the company.</div>
   </section>
 
-  <!-- ============== QUALIFICATIONS ============== -->
+  <!-- ===== QUALIFICATIONS ===== -->
   <section class="section">
     <div class="section-header">
       <div class="bar"></div>
@@ -531,24 +466,19 @@
       <div class="qual-item"><div class="check">&#10003;</div>Communication skills</div>
       <div class="qual-item"><div class="check">&#10003;</div>Teamwork ability</div>
     </div>
-
-    <div class="purpose-note">
-      <strong>Purpose:</strong> Helps applicants know the skills required for each position.
-    </div>
+    <div class="purpose-note"><strong>Purpose:</strong> Helps applicants know the skills required for each position.</div>
   </section>
 
-  <!-- ============== APPLICATION INSTRUCTIONS ============== -->
+  <!-- ===== APPLICATION ===== -->
   <section class="section">
     <div class="apply-box">
       <h2>How to Apply</h2>
       <p>Interested applicants should send the following documents to the company email:</p>
-
       <div class="requirements">
         <span class="req-chip">&#128196; CV</span>
         <span class="req-chip">&#9993; Application Letter</span>
         <span class="req-chip">&#128206; Supporting Documents</span>
       </div>
-
       <a href="mailto:visiontechsolutions@gmail.com?subject=Job%20Application%20-%20Vision%20Tech%20Solutions" class="btn">
         Apply via Email &rarr;
       </a>
@@ -560,25 +490,43 @@
 
 </main>
 
-<!-- ============== STANDARD FOOTER ============== -->
+<!-- ===== FOOTER ===== -->
 <footer>
+
+  <!-- CTA Banner -->
+  <div class="footer-cta">
+    <h2>Need Any of These Services?</h2>
+    <p>Contact us today to discuss your project and get a free consultation.</p>
+    <a href="contact.html" class="cta-btn">Contact Us Now &rarr;</a>
+  </div>
+
+  <!-- Footer Columns -->
   <div class="footer-grid">
 
     <div class="footer-col">
       <h3>Vision Tech Solutions</h3>
-      <p>Innovate &bull; Connect &bull; Secure</p>
-      <p>Providing professional IT services including web development, networking, cybersecurity, and software solutions.</p>
+      <p>Providing innovative IT solutions to help businesses grow and succeed in the digital age.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05A4.28 4.28 0 0 0 15.5 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.11 4.07 7.38 1.64 4.76c-.37.64-.58 1.38-.58 2.17 0 1.49.76 2.81 1.91 3.58A4.27 4.27 0 0 1 .96 9.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.3 4.3 0 0 1-1.93.07 4.29 4.29 0 0 0 4 2.98A8.6 8.6 0 0 1 0 18.57 12.12 12.12 0 0 0 6.56 20.5c7.88 0 12.19-6.53 12.19-12.19 0-.19 0-.37-.01-.56A8.7 8.7 0 0 0 22.46 6z"/></svg>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.74 3.74 0 0 1-1.38-.9 3.74 3.74 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.27.83-.39.39-.63.76-.83 1.27-.15.39-.33.97-.38 2.04C2.73 8.5 2.72 8.85 2.72 12s.01 3.5.07 4.74c.05 1.07.23 1.65.38 2.04.2.51.44.88.83 1.27.39.39.76.63 1.27.83.39.15.97.33 2.04.38 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.27-.83.39-.39.63-.76.83-1.27.15-.39.33-.97.38-2.04.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.07-.23-1.65-.38-2.04-.2-.51-.44-.88-.83-1.27a3.42 3.42 0 0 0-1.27-.83c-.39-.15-.97-.33-2.04-.38C15.5 4.01 15.15 4 12 4zm0 3.07a4.93 4.93 0 1 1 0 9.86 4.93 4.93 0 0 1 0-9.86zm0 8.13a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5.13-8.32a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.5H5.67v7.84h2.67zM7 9.34a1.55 1.55 0 1 0 0-3.09 1.55 1.55 0 0 0 0 3.09zm11.34 9V13.7c0-2.47-1.32-3.62-3.07-3.62-1.4 0-2.04.78-2.39 1.32V10.5h-2.67c.04.75 0 7.84 0 7.84h2.67v-4.38c0-.24.02-.47.09-.65.18-.48.62-.97 1.34-.97.95 0 1.33.72 1.33 1.78v4.22h2.7z"/></svg>
+        </a>
+        <a href="https://wa.me/256000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5l.3-.4c.1-.2.1-.3 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4S6 7.7 6 9.2s1.1 3 1.2 3.2c.2.2 2.2 3.3 5.3 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.6A11.85 11.85 0 0 0 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0zm0 22a9.9 9.9 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.9 9.9 0 0 1 2 12C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="footer-col">
-      <h4>Contact Us</h4>
-      <p>&#9993; Email: <a href="mailto:visiontechsolutions@gmail.com">visiontechsolutions@gmail.com</a></p>
-      <p>&#128222; Phone: +256 XXX XXX XXX</p>
-      <p>&#128205; Location: Kampala, Uganda</p>
-    </div>
-
-    <div class="footer-col">
-      <h4>Quick Links</h4>
+      <h3>Quick Links</h3>
       <ul class="quick-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -590,26 +538,28 @@
     </div>
 
     <div class="footer-col">
-      <h4>Follow Us</h4>
-      <p>Stay connected on social media</p>
-      <div class="socials">
-        <!-- Facebook -->
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
-        </a>
-        <!-- Twitter / X -->
-        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
-          <svg viewBox="0 0 24 24"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.79l-4.66-6.1L4.8 22H2.04l6.98-7.97L2 2h6.91l4.2 5.55L18.244 2zm-2.38 18.4h1.86L7.27 3.5H5.31l10.55 16.9z"/></svg>
-        </a>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.74 3.74 0 0 1-1.38-.9 3.74 3.74 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.27.83-.39.39-.63.76-.83 1.27-.15.39-.33.97-.38 2.04C2.73 8.5 2.72 8.85 2.72 12s.01 3.5.07 4.74c.05 1.07.23 1.65.38 2.04.2.51.44.88.83 1.27.39.39.76.63 1.27.83.39.15.97.33 2.04.38 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.27-.83.39-.39.63-.76.83-1.27.15-.39.33-.97.38-2.04.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.07-.23-1.65-.38-2.04-.2-.51-.44-.88-.83-1.27a3.42 3.42 0 0 0-1.27-.83c-.39-.15-.97-.33-2.04-.38C15.5 4.01 15.15 4 12 4zm0 3.07a4.93 4.93 0 1 1 0 9.86 4.93 4.93 0 0 1 0-9.86zm0 8.13a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5.13-8.32a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.5H5.67v7.84h2.67zM7 9.34a1.55 1.55 0 1 0 0-3.09 1.55 1.55 0 0 0 0 3.09zm11.34 9V13.7c0-2.47-1.32-3.62-3.07-3.62-1.4 0-2.04.78-2.39 1.32V10.5h-2.67c.04.75 0 7.84 0 7.84h2.67v-4.38c0-.24.02-.47.09-.65.18-.48.62-.97 1.34-.97.95 0 1.33.72 1.33 1.78v4.22h2.7z"/></svg>
-        </a>
+      <h3>Contact Info</h3>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:visiontechsolutions@gmail.com">visiontechsolutions@gmail.com</a>
       </div>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1 1 0 0 0-1.02.24l-2.2 2.2a15.07 15.07 0 0 1-6.59-6.58l2.2-2.2a1 1 0 0 0 .25-1.02A11.36 11.36 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1c0 9.39 7.61 17 17 17a1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
+        <a href="tel:+256000000000">+256 XXX XXX XXX</a>
+      </div>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <span>Kampala, Uganda</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Business Hours</h3>
+      <p style="line-height:2; margin-bottom:0;">
+        Monday &ndash; Friday: 8am &ndash; 6pm<br>
+        Saturday: 9am &ndash; 2pm<br>
+        Sunday: Closed
+      </p>
     </div>
 
   </div>
@@ -617,6 +567,7 @@
   <div class="footer-bottom">
     &copy; 2026 Vision Tech Solutions. All Rights Reserved.
   </div>
+
 </footer>
 
 </body>
