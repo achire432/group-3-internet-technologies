@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & FAQ - Vision Tech Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #031838;
+            --primary-dark: #182944;
+            --accent-color: #ff6b35;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --border-color: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* HEADER SECTION */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .intro-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .intro-section p {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background-color: var(--bg-light);
+            border-radius: 6px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .faq-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+
+        .faq-toggle {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            width: 30px;
+            text-align: center;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: #fafbfc;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* SUPPORT CONTACT SECTION */
+        .support-contact {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .support-contact h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .support-contact p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .support-contact .contact-method p {
+            color: var(--text-light);
+            word-break: break-all;
+            margin: 0.75rem 0 0;
+            font-size: 0.9rem;
+        }
+
+        .support-contact .support-note {
+            margin-bottom: 2rem;
+        }
+
+        .contact-method a {
+            font-weight: 600;
+        }
+
+        footer hr {
+            border-color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        footer .follow-text {
+            margin-top: 1.5rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-method {
+            padding: 1.5rem;
+            background-color: var(--bg-light);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .contact-method h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-method p {
+            color: var(--text-light);
+            word-break: break-all;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .quick-footer-links {
+            margin: 1.5rem 0;
+        }
+
+        .quick-footer-links a {
+            margin: 0 1rem;
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .faq-question {
+                padding: 1.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About Us</a> |
+        <a href="services.html">Services</a> |
+        <a href="products.html">Products</a> |
+        <a href="contact.html">Contact</a> |
+        <a href="feedback.html">Feedback</a> |
+        <a href="careers.html">Careers</a> |
+        <a href="support.html">Support/FAQ</a>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Support & FAQ</h1>
+        <p>Get answers to common questions and find the support you need</p>
+    </header>
+
+    <div class="container">
+        <!-- INTRODUCTION SECTION -->
+        <section class="intro-section">
+            <h2>How We Can Help</h2>
+            <p>
+                Welcome to Vision Tech Solutions' Support Center. We're here to help you understand our services, 
+                provide quick assistance, and answer your common questions. This page is designed to give you 
+                immediate answers without needing to contact us directly.
+            </p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">✅</div>
+                    <h3>Quick Answers</h3>
+                    <p>Find instant solutions to common questions</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <h3>Service Info</h3>
+                    <p>Learn about all our IT services</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>Easy Contact</h3>
+                    <p>Multiple ways to reach our support team</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Support</h3>
+                    <p>Quick resolution to your issues</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What services do you offer?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Vision Tech Solutions offers various IT services including:</strong></p>
+                        <ul>
+                            <li>Website Development</li>
+                            <li>Mobile App Development</li>
+                            <li>Networking Solutions</li>
+                            <li>Cybersecurity Services</li>
+                            <li>Software Installation</li>
+                            <li>System Maintenance</li>
+                            <li>IT Consultation</li>
+                        </ul>
+                        <p>This question helps you understand the main services provided by our company.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I contact support?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>You can contact support through:</strong></p>
+                        <ul>
+                            <li>Company Email: visiontechsolutions@gmail.com</li>
+                            <li>Phone: +256 726 317 360</li>
+                            <li>Contact Form on our Contact Us page</li>
+                        </ul>
+                        <p>This guides you on how you can get assistance from our company.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you develop websites?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Yes! Vision Tech Solutions develops professional websites for:</strong></p>
+                        <ul>
+                            <li>Schools</li>
+                            <li>Businesses</li>
+                            <li>Hospitals</li>
+                            <li>Organizations</li>
+                            <li>Personal portfolios</li>
+                        </ul>
+                        <p>This helps customers know whether website development services are available.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer mobile app development?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            <strong>Yes.</strong> We develop simple and modern mobile applications for Android and 
+                            web platforms depending on your specific needs.
+                        </p>
+                        <p>This informs you that we also develop mobile applications tailored to your requirements.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does website development take?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            The development time depends on the complexity of the project. Simple websites may take 
+                            a few days while larger systems may take several weeks.
+                        </p>
+                        <p>This helps customers understand realistic project timelines before committing to our services.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide networking services?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Yes. We offer networking services such as:</strong></p>
+                        <ul>
+                            <li>Network Installation</li>
+                            <li>Router Configuration</li>
+                            <li>LAN Setup</li>
+                            <li>Internet Troubleshooting</li>
+                        </ul>
+                        <p>This informs clients about our networking-related service offerings.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I request a custom software system?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Yes.</strong> Customers can request custom systems such as:</p>
+                        <ul>
+                            <li>School Management Systems</li>
+                            <li>Inventory Systems</li>
+                            <li>Hospital Systems</li>
+                            <li>Online Voting Systems</li>
+                        </ul>
+                        <p>This lets you know our company can create customized software solutions for your business.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide cybersecurity services?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Yes. We provide basic cybersecurity services including:</strong></p>
+                        <ul>
+                            <li>System Protection</li>
+                            <li>Password Security Guidance</li>
+                            <li>Virus Protection</li>
+                            <li>Security Consultation</li>
+                        </ul>
+                        <p>This helps you understand the security-related services we offer to protect your data.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is Vision Tech Solutions available online?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            <strong>Yes.</strong> Customers can communicate with us online through email and our 
+                            website contact form, making it convenient to reach us from anywhere.
+                        </p>
+                        <p>This shows that support can be accessed remotely for your convenience.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I send feedback?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Users can send feedback through our Feedback page by filling in the feedback form. 
+                            Your messages are sent directly to our company, and we value all suggestions.
+                        </p>
+                        <p>This guides you on how to submit comments, suggestions, and feedback to help us improve.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUPPORT CONTACT SECTION -->
+        <section class="support-contact">
+            <h2>Need More Help?</h2>
+            <p class="support-note">
+                If you didn't find the answer you were looking for, our support team is ready to help you directly.
+            </p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <h3>📧 Email</h3>
+                    <p>visiontechsolutions@gmail.com</p>
+                    <p>Response within 24 hours</p>
+                </div>
+                <div class="contact-method">
+                    <h3>📞 Phone</h3>
+                    <p>+256 726 317 360</p>
+                    <p>Business hours</p>
+                </div>
+                <div class="contact-method">
+                    <h3>📋 Contact Form</h3>
+                    <p><a href="contact.html">Visit our Contact page →</a></p>
+                    <p>Direct message form</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <hr>
+
+        <h3>Vision Tech Solutions</h3>
+
+        <p>Email: visiontechsolutions@gmail.com</p>
+        <p>Phone: +256 726 317 360</p>
+        <p>Location: Kampala, Uganda</p>
+
+        <p class="follow-text">
+            <strong>Follow us:</strong><br>
+            <span class="social-links">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">f</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">📷</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+            </span>
+        </p>
+
+        <div class="quick-footer-links">
+            <p><strong>Quick Links:</strong></p>
+            <p>
+                <a href="index.html">Home</a> |
+                <a href="about.html">About</a> |
+                <a href="services.html">Services</a> |
+                <a href="products.html">Products</a> |
+                <a href="contact.html">Contact</a>
+            </p>
+        </div>
+
+        <p class="copyright">© 2026 Vision Tech Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <!-- FAQ INTERACTION SCRIPT -->
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
