@@ -8,7 +8,7 @@
     <!-- Font Awesome 6 (Social Icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Google Fonts: Poppins (same as index) -->
+    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -25,7 +25,7 @@
             line-height: 1.6;
         }
 
-        /* ===== ANIMATIONS (subtle, same style as index) ===== */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -48,7 +48,7 @@
             }
         }
 
-        /* ===== HEADER / NAVIGATION (exactly consistent with index style) ===== */
+        /* ===== HEADER / NAVIGATION ===== */
         header {
             background: #0b1f3a;
             padding: 15px 5%;
@@ -68,22 +68,11 @@
             gap: 12px;
         }
 
-        /* custom logo icon (replaces missing image, keeps brand identity clean) */
-        .logo-icon {
+        .logo img {
             width: 55px;
             height: 55px;
-            background: #800000;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: 2px solid #800000;
-            transition: 0.3s;
-        }
-
-        .logo-icon i {
-            font-size: 28px;
-            color: white;
         }
 
         .logo h2 {
@@ -177,7 +166,7 @@
             font-size: 1rem;
         }
 
-        /* mission & vision row (two cards) */
+        /* mission & vision row */
         .mv-grid {
             display: flex;
             gap: 40px;
@@ -229,7 +218,7 @@
             line-height: 1.6;
         }
 
-        /* goals / objectives section */
+        /* goals section */
         .goals-section {
             background: #f8f9fa;
             padding: 50px 40px;
@@ -306,7 +295,6 @@
             font-size: 0.9rem;
         }
 
-        /* small cta or quote */
         .quote-block {
             text-align: center;
             margin: 50px 0 30px;
@@ -327,7 +315,7 @@
             font-weight: 500;
         }
 
-        /* ===== FOOTER (exactly same style as index + social icons open new tab) ===== */
+        /* ===== FOOTER ===== */
         footer {
             background: #0b1f3a;
             color: white;
@@ -371,7 +359,6 @@
             color: #800000;
         }
 
-        /* social icons with logos — open in new tab */
         .social-icons {
             display: flex;
             gap: 20px;
@@ -414,7 +401,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== RESPONSIVE (mobile friendly) ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -451,9 +438,10 @@
 </head>
 <body>
 
-<!-- ===== HEADER WITH STANDARD NAVIGATION (matches index style & spec requirements) ===== -->
+<!-- ===== HEADER - FIXED VERSION ===== -->
 <header>
-    <img src="visiontech.png" alt="Vision Tech Solutions Logo" style="width:55px; height: 55px; border-radius: 50%;">
+    <div class="logo">
+        <img src="visiontech.png" alt="Vision Tech Solutions Logo">
         <div>
             <h2>Vision Tech Solutions</h2>
             <p>Innovation Meets Technology</p>
@@ -473,39 +461,35 @@
 
 <!-- ABOUT PAGE MAIN CONTENT -->
 <div class="about-container">
-    <!-- page heading -->
     <div class="page-title">
         <h1>About <span>Vision Tech Solutions</span></h1>
         <p>Your trusted partner in digital innovation, delivering high-impact IT solutions across Africa and beyond.</p>
     </div>
 
-    <!-- COMPANY BACKGROUND / HISTORY SECTION -->
     <div class="history-section">
         <h2><i class="fas fa-building"></i> Our Background & History</h2>
         <p><strong>Vision Tech Solutions</strong> was founded in 2020 in Kampala, Uganda, by a group of passionate IT engineers and entrepreneurs who envisioned a future where local businesses could access world-class technology services without complexity. What started as a small freelancing team has evolved into a full-scale IT company known for reliability, affordability, and innovation.</p>
-        <p>Driven by the need for digital transformation in education, healthcare, and commerce, we quickly expanded our expertise — from building simple websites to developing custom management systems, cybersecurity frameworks, and mobile applications. Over the years, we’ve partnered with schools, hospitals, startups, and corporations to simplify their operations through smart software solutions. Our journey is fueled by a commitment to bridge the technology gap and empower Ugandan and East African enterprises with sustainable digital tools.</p>
+        <p>Driven by the need for digital transformation in education, healthcare, and commerce, we quickly expanded our expertise — from building simple websites to developing custom management systems, cybersecurity frameworks, and mobile applications. Over the years, we've partnered with schools, hospitals, startups, and corporations to simplify their operations through smart software solutions. Our journey is fueled by a commitment to bridge the technology gap and empower Ugandan and East African enterprises with sustainable digital tools.</p>
         <p>Today, Vision Tech Solutions stands as a modern IT hub, blending creativity with technical excellence to solve real-world problems. Our team remains dedicated to continuous learning and delivering measurable results for every client.</p>
     </div>
 
-    <!-- MISSION & VISION CARDS (exactly as required) -->
     <div class="mv-grid">
         <div class="mv-card">
             <div class="mv-icon">
                 <i class="fas fa-bullseye"></i>
             </div>
             <h3>Our Mission</h3>
-            <p>“To provide reliable, affordable, and innovative IT solutions — including website development, networking, cybersecurity, and custom software systems — that empower businesses, organizations, and individuals to thrive in the digital economy.”</p>
+            <p>"To provide reliable, affordable, and innovative IT solutions — including website development, networking, cybersecurity, and custom software systems — that empower businesses, organizations, and individuals to thrive in the digital economy."</p>
         </div>
         <div class="mv-card">
             <div class="mv-icon">
                 <i class="fas fa-globe"></i>
             </div>
             <h3>Our Vision</h3>
-            <p>“To become a leading IT solutions provider in Africa and beyond, recognized for excellence, integrity, and impact — delivering innovative technology services that transform industries and improve lives worldwide.”</p>
+            <p>"To become a leading IT solutions provider in Africa and beyond, recognized for excellence, integrity, and impact — delivering innovative technology services that transform industries and improve lives worldwide."</p>
         </div>
     </div>
 
-    <!-- COMPANY GOALS / OBJECTIVES SECTION -->
     <div class="goals-section">
         <h2><i class="fas fa-flag-checkered"></i> Company Goals & Objectives</h2>
         <div class="section-subhead">What drives us forward — strategic targets that shape our roadmap</div>
@@ -521,64 +505,60 @@
                 <div class="goal-icon"><i class="fas fa-laptop-code"></i></div>
                 <div class="goal-text">
                     <h4>Efficient Software Systems</h4>
-                    <p>Develop at least 50 custom software systems (school, hospital, inventory, voting) that streamline business processes.</p>
+                    <p>Develop at least 50 custom software systems that streamline business processes.</p>
                 </div>
             </div>
             <div class="goal-item">
                 <div class="goal-icon"><i class="fas fa-graduation-cap"></i></div>
                 <div class="goal-text">
                     <h4>Youth Empowerment & Internships</h4>
-                    <p>Train and mentor 100+ young developers and IT interns annually, bridging the skills gap in the tech industry.</p>
+                    <p>Train and mentor 100+ young developers and IT interns annually.</p>
                 </div>
             </div>
             <div class="goal-item">
-                <div class="goal-icon"><i class="fas fa-shield-haltered"></i></div>
+                <div class="goal-icon"><i class="fas fa-shield-alt"></i></div>
                 <div class="goal-text">
                     <h4>Digital Security Awareness</h4>
-                    <p>Provide cybersecurity consultation and protection to 100+ local businesses, reducing digital vulnerabilities.</p>
+                    <p>Provide cybersecurity consultation to 100+ local businesses.</p>
                 </div>
             </div>
             <div class="goal-item">
                 <div class="goal-icon"><i class="fas fa-charging-station"></i></div>
                 <div class="goal-text">
                     <h4>Innovation & Expansion</h4>
-                    <p>Launch two new digital products each year and expand service coverage across East Africa by 2028.</p>
+                    <p>Launch two new digital products each year across East Africa by 2028.</p>
                 </div>
             </div>
             <div class="goal-item">
                 <div class="goal-icon"><i class="fas fa-headset"></i></div>
                 <div class="goal-text">
                     <h4>24/7 Customer Support</h4>
-                    <p>Maintain round-the-clock technical assistance and proactive maintenance for all enterprise clients.</p>
+                    <p>Maintain round-the-clock technical assistance for all enterprise clients.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- additional quote / extra authenticity -->
     <div class="quote-block">
         <i class="fas fa-quote-left"></i>
         <p>Building technology that matters — we measure success by the growth of our clients and the positive change we create in communities.</p>
-        <i class="fas fa-quote-right" style="display: inline-block; margin-top: 8px;"></i>
     </div>
 </div>
 
-<!-- ===== FOOTER (STANDARD FOR ALL PAGES: includes social media logos, opens new tab, contact, quick links) ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
     <div class="footer-content">
-        <!-- Company branding + social media icons (facebook, twitter, instagram, linkedin) with logos & new tab -->
         <div class="footer-section">
             <h3>Vision Tech Solutions</h3>
             <p>Providing innovative IT solutions to help businesses grow and succeed in the digital age.</p>
             <div class="social-icons">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
 
-        <!-- Quick Important Links -->
         <div class="footer-section">
             <h3>Quick Links</h3>
             <a href="index.html">Home</a>
@@ -591,7 +571,6 @@
             <a href="support.html">Support/FAQ</a>
         </div>
 
-        <!-- Contact Information -->
         <div class="footer-section">
             <h3>Contact Info</h3>
             <p><i class="fas fa-envelope"></i> visiontechsolutions@gmail.com</p>
@@ -599,7 +578,6 @@
             <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
         </div>
 
-        <!-- Business hours & additional -->
         <div class="footer-section">
             <h3>Business Hours</h3>
             <p>Monday - Friday: 8am - 6pm</p>
