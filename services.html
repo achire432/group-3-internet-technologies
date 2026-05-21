@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Tech Solutions | Our Services</title>
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background:#ffffff;
+    color:#333;
+    line-height:1.6;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* ===== HEADER / NAVIGATION ===== */
+header{
+    background:#0b1f3a;
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:2px solid #800000;
+}
+
+.logo h2{
+    color:white;
+    font-size:1.3rem;
+    font-weight:600;
+}
+
+.logo p{
+    color:#ccc;
+    font-size:0.7rem;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#800000;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header{
+    background:linear-gradient(135deg, #0b1f3a 0%, #800000 100%);
+    color:white;
+    text-align:center;
+    padding:60px 5%;
+    animation:fadeIn 1s ease;
+}
+
+.page-header h1{
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+.page-header p{
+    font-size:1.1rem;
+    max-width:700px;
+    margin:0 auto;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services-container{
+    padding:80px 5%;
+    background:#fff;
+}
+
+.intro-text{
+    text-align:center;
+    margin-bottom:50px;
+    animation:fadeInUp 0.8s ease;
+}
+
+.intro-text h2{
+    font-size:2rem;
+    color:#0b1f3a;
+    margin-bottom:15px;
+}
+
+.intro-text p{
+    color:#666;
+    max-width:700px;
+    margin:0 auto;
+}
+
+/* Service Cards Grid */
+.services-grid{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+/* Individual Service Row */
+.service-row{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    background:#f8f9fa;
+    border-radius:15px;
+    padding:30px;
+    transition:0.4s;
+    animation:fadeInUp 0.8s ease;
+    border-left:5px solid #800000;
+}
+
+.service-row:hover{
+    transform:translateX(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-icon{
+    flex:0 0 80px;
+    text-align:center;
+}
+
+.service-icon i{
+    font-size:3.5rem;
+    color:#800000;
+}
+
+.service-content{
+    flex:1;
+}
+
+.service-content h3{
+    font-size:1.5rem;
+    color:#0b1f3a;
+    margin-bottom:10px;
+}
+
+.service-content p{
+    color:#555;
+    line-height:1.6;
+}
+
+/* Alternative Simple List View (Optional) */
+.simple-list-view{
+    margin-top:60px;
+    background:#f8f9fa;
+    border-radius:15px;
+    padding:40px;
+}
+
+.simple-list-view h3{
+    font-size:1.5rem;
+    color:#0b1f3a;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.service-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    list-style:none;
+}
+
+.service-list li{
+    background:white;
+    padding:10px 20px;
+    border-radius:30px;
+    color:#0b1f3a;
+    font-weight:500;
+    border:1px solid #800000;
+    transition:0.3s;
+}
+
+.service-list li:hover{
+    background:#800000;
+    color:white;
+    transform:scale(1.05);
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section{
+    background:#0b1f3a;
+    color:white;
+    text-align:center;
+    padding:60px 5%;
+    margin-top:40px;
+}
+
+.cta-section h2{
+    font-size:1.8rem;
+    margin-bottom:15px;
+}
+
+.cta-section p{
+    margin-bottom:25px;
+    color:#ccc;
+}
+
+.cta-btn{
+    background:#800000;
+    color:white;
+    padding:12px 30px;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.cta-btn:hover{
+    background:white;
+    color:#800000;
+    transform:translateY(-3px);
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#0b1f3a;
+    color:white;
+    padding:50px 5% 30px;
+}
+
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:40px;
+    margin-bottom:40px;
+}
+
+.footer-section{
+    flex:1;
+    min-width:200px;
+}
+
+.footer-section h3{
+    margin-bottom:20px;
+    color:#800000;
+}
+
+.footer-section p{
+    margin-bottom:10px;
+    color:#ccc;
+}
+
+.footer-section a{
+    color:#ccc;
+    text-decoration:none;
+    display:block;
+    margin-bottom:8px;
+    transition:0.3s;
+}
+
+.footer-section a:hover{
+    color:#800000;
+}
+
+.social-icons{
+    display:flex;
+    gap:20px;
+    margin-top:20px;
+}
+
+.social-icons a{
+    width:45px;
+    height:45px;
+    background:#800000;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    background:white;
+    transform:translateY(-5px);
+}
+
+.social-icons a:hover i{
+    color:#800000;
+}
+
+.social-icons i{
+    font-size:1.5rem;
+    color:white;
+    transition:0.3s;
+}
+
+.copyright{
+    text-align:center;
+    padding-top:30px;
+    border-top:1px solid #333;
+    color:#888;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:768px){
+    header{
+        flex-direction:column;
+        text-align:center;
+        gap:15px;
+    }
+    
+    .nav-links{
+        justify-content:center;
+    }
+    
+    .service-row{
+        flex-direction:column;
+        text-align:center;
+    }
+    
+    .service-icon{
+        flex:0 0 auto;
+    }
+    
+    .footer-content{
+        flex-direction:column;
+        text-align:center;
+    }
+    
+    .social-icons{
+        justify-content:center;
+    }
+    
+    .page-header h1{
+        font-size:1.8rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="logo">
+        <img src="visiontech.png" alt="Vision Tech Solutions Logo">
+        <div>
+            <h2>Vision Tech Solutions</h2>
+            <p>Innovation Meets Technology</p>
+        </div>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="careers.html">Careers</a>
+        <a href="support.html">Support</a>
+    </div>
+</header>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+    <h1>Our Services</h1>
+    <p>Discover the range of professional IT services we offer to help your business grow and succeed in the digital world.</p>
+</section>
+
+<!-- ===== SERVICES SECTION ===== -->
+<section class="services-container">
+    <div class="intro-text">
+        <h2>What We Offer</h2>
+        <p>At Vision Tech Solutions, we provide comprehensive IT services tailored to meet your specific business needs.</p>
+    </div>
+
+    <div class="services-grid">
+        
+        <!-- Service 1: Website Development -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="service-content">
+                <h3>Website Development</h3>
+                <p>Creating modern, responsive, and user-friendly websites for businesses, schools, organizations, and personal portfolios. We ensure your online presence is professional and effective.</p>
+            </div>
+        </div>
+
+        <!-- Service 2: Mobile App Development -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="service-content">
+                <h3>Mobile App Development</h3>
+                <p>Designing and developing custom mobile applications for Android and web platforms. We create apps that are fast, reliable, and easy to use for your customers.</p>
+            </div>
+        </div>
+
+        <!-- Service 3: Networking Services -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="service-content">
+                <h3>Networking Services</h3>
+                <p>Setting up and managing computer networks, LAN/WAN configurations, router setup, and internet connectivity solutions for businesses and organizations.</p>
+            </div>
+        </div>
+
+        <!-- Service 4: Cybersecurity Services -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="service-content">
+                <h3>Cybersecurity Services</h3>
+                <p>Protecting your systems from hackers, viruses, malware, and security threats. We provide security assessments, data protection, and ongoing security monitoring.</p>
+            </div>
+        </div>
+
+        <!-- Service 5: Software Installation -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-download"></i>
+            </div>
+            <div class="service-content">
+                <h3>Software Installation</h3>
+                <p>Installing and configuring software on computers, including operating systems, business applications, and specialized tools to ensure optimal performance.</p>
+            </div>
+        </div>
+
+        <!-- Service 6: System Maintenance -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="service-content">
+                <h3>System Maintenance</h3>
+                <p>Fixing, updating, and maintaining computer systems to ensure they work properly and efficiently. Regular maintenance to prevent issues before they occur.</p>
+            </div>
+        </div>
+
+        <!-- Service 7: IT Consultation -->
+        <div class="service-row">
+            <div class="service-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <div class="service-content">
+                <h3>IT Consultation</h3>
+                <p>Giving expert advice to clients on IT solutions, technology decisions, digital transformation strategies, and best practices for your business.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple List View (Alternative display method) -->
+    <div class="simple-list-view">
+        <h3>Quick Service Overview</h3>
+        <ul class="service-list">
+            <li>💻 Website Development</li>
+            <li>📱 Mobile App Development</li>
+            <li>🌐 Networking Services</li>
+            <li>🔒 Cybersecurity Services</li>
+            <li>⚙️ Software Installation</li>
+            <li>🛠️ System Maintenance</li>
+            <li>💡 IT Consultation</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ===== CALL TO ACTION SECTION ===== -->
+<section class="cta-section">
+    <h2>Need Any of These Services?</h2>
+    <p>Contact us today to discuss your project and get a free consultation.</p>
+    <a href="contact.html" class="cta-btn">Contact Us Now →</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Vision Tech Solutions</h3>
+            <p>Providing innovative IT solutions to help businesses grow and succeed in the digital age.</p>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/256XXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-envelope"></i> visiontechsolutions@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +256 XXX XXX XXX</p>
+            <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Business Hours</h3>
+            <p>Monday - Friday: 8am - 6pm</p>
+            <p>Saturday: 9am - 2pm</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>&copy; 2026 Vision Tech Solutions. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
