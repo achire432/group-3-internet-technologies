@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Tech Solutions | Our Products</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0b1f3a;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid #800000;
+        }
+
+        .logo h2 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .logo p {
+            color: #ccc;
+            font-size: 0.7rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #800000;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, #0b1f3a 0%, #800000 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 5%;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== PRODUCTS CONTAINER ===== */
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-icon {
+            background: linear-gradient(135deg, #0b1f3a 0%, #800000 100%);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .product-icon i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .product-content {
+            padding: 30px;
+        }
+
+        .product-content h2 {
+            font-size: 1.8rem;
+            color: #0b1f3a;
+            margin-bottom: 15px;
+        }
+
+        .product-content p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .product-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            color: #800000;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: #800000;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 1.8rem;
+            color: #0b1f3a;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn {
+            background: #800000;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #0b1f3a;
+            transform: scale(1.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0b1f3a;
+            color: white;
+            padding: 50px 5% 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #800000;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #800000;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: #800000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: white;
+            transform: translateY(-5px);
+        }
+
+        .social-icons a:hover i {
+            color: #800000;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2c3e55;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <img src="visiontech.png" alt="Vision Tech Solutions Logo">
+            <div>
+                <h2>Vision Tech Solutions</h2>
+                <p>Innovation Meets Technology</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="careers.html">Careers</a>
+            <a href="support.html">Support/FAQ</a>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <h1>Our Software Products</h1>
+        <p>Explore the innovative software systems developed by Vision Tech Solutions to help organizations operate
+            efficiently.</p>
+    </section>
+
+    <!-- ===== PRODUCTS CONTAINER ===== -->
+    <div class="products-container">
+        <p class="section-subtitle">Powerful, reliable, and user-friendly software solutions for different industries
+        </p>
+
+        <div class="products-grid">
+            <!-- Product 1: School Management System -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="product-content">
+                    <h2>School Management System</h2>
+                    <p>A comprehensive system designed to help schools manage daily operations efficiently.</p>
+                    <ul class="product-features">
+                        <li>Student records management</li>
+                        <li>Attendance tracking</li>
+                        <li>Results and grade management</li>
+                        <li>Fees and payment information</li>
+                        <li>Parent portal access</li>
+                    </ul>
+                    <span class="product-badge">For Schools & Educational Institutions</span>
+                </div>
+            </div>
+
+            <!-- Product 2: Hospital Management System -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="product-content">
+                    <h2>Hospital Management System</h2>
+                    <p>A digital solution for hospitals to manage patient care and administrative tasks.</p>
+                    <ul class="product-features">
+                        <li>Patient records management</li>
+                        <li>Appointment scheduling</li>
+                        <li>Doctor information system</li>
+                        <li>Medical services tracking</li>
+                        <li>Billing and invoice management</li>
+                    </ul>
+                    <span class="product-badge">For Hospitals & Clinics</span>
+                </div>
+            </div>
+
+            <!-- Product 3: Inventory Management System -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <div class="product-content">
+                    <h2>Inventory Management System</h2>
+                    <p>A powerful tool for businesses to track and manage stock levels and sales.</p>
+                    <ul class="product-features">
+                        <li>Product and stock tracking</li>
+                        <li>Real-time stock level updates</li>
+                        <li>Sales records management</li>
+                        <li>Store information dashboard</li>
+                        <li>Low stock alerts</li>
+                    </ul>
+                    <span class="product-badge">For Retail & Business</span>
+                </div>
+            </div>
+
+            <!-- Product 4: Online Voting System -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-vote-yea"></i>
+                </div>
+                <div class="product-content">
+                    <h2>Online Voting System</h2>
+                    <p>A secure electronic voting platform for conducting elections online.</p>
+                    <ul class="product-features">
+                        <li>Candidate listing and profiles</li>
+                        <li>Secure voting process</li>
+                        <li>Automatic vote counting</li>
+                        <li>Real-time results display</li>
+                        <li>Voter authentication system</li>
+                    </ul>
+                    <span class="product-badge">For Elections & Polls</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Need a Custom Software Solution?</h2>
+            <p>We also develop custom software tailored to your specific business needs. Contact us to discuss your
+                project.</p>
+            <a href="contact.html" class="cta-btn">Request a Quote →</a>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vision Tech Solutions</h3>
+                <p>Providing innovative software solutions to help businesses grow.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Feedback</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> visiontechsolutions@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +256 XXX XXX XXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Vision Tech Solutions. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
